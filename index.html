@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/principalSheet.css" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora linear</title>
+    <style>
+        .p-t-25{
+              padding-top: 35px !important;
+          }
+      </style>
+      <script>
+          var btn = 0;
+        
+          function setValBtn(e){
+              if( e.id == 'btn-max'){
+                btn = 1;
+              } else if(e.id == 'btn-min'){
+                btn= -1;
+              }
+          }
+
+      </script>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="input-primary container">
+            <div class="row">
+                <h1>Calculadora Linear</h1>
+            </div>
+            <div class="row center-align">
+                <h5>Tipo de Problema:</h5>
+            </div>
+            <div class="row center-align">
+                <a class="waves-effect waves-light btn" id="btn-max" onclick="setValBtn(this)">Maximização</a>
+                <a class="waves-effect waves-light btn" id="btn-min" onclick="setValBtn(this)" >Minimização</a>
+            </div>
+            <div class="row center-align">
+                <h5>Função Objetivo:</h5>
+            </div>
+            <div class="row center-align">
+                <form class="col s12" id="func-objetivo">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input id="f-o-constX" type="number" class="validate" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>X</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default">
+                                <option value="adi" selected>+</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="f-o-constY" type="number" class="validate" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>Y</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="input-secondary container">
+            <div class="row center-align">
+                <h5>Funções de Restrição:</h5>
+            </div>
+            <div class="row center-align">
+                <form class="col s12" id="func-retric-1">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input id="f-r1-constX" type="number" class="validate restricX" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>X</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOp">
+                                <option value="adi" selected>+</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="f-r1-constY" type="number" class="validate restricY" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>Y</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOpResult">
+                                <option value="==" selected>=</option>
+                                <option value=">=">>=</option>
+                                <option value="<=">&lt=</option>
+                            </select> </div>
+                        <div class="input-field col s2">
+                            <input id="f-r1-result" type="number" class="validate restricValResult" placeholder="0">
+                            <span class="helper-text" data-success="right" data-error="wrong"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row center-align">
+                <form class="col s12" id="func-retric-2">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input id="f-r2-constX" type="number" class="validate restricX" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>X</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOp">
+                                <option value="adi" selected>+</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="f-r2-constY" type="number" class="validate restricY" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>Y</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOpResult">
+                                <option value="==" selected>=</option>
+                                <option value=">=">>=</option>
+                                <option value="<=">
+                                    &lt=</option>
+                            </select> </div>
+                        <div class="input-field col s2">
+                            <input id="f-r2-result" type="number" class="validate restricValResult" placeholder="0">
+                            <span class="helper-text" data-success="right" data-error="wrong"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row center-align">
+                <form class="col s12" id="func-retric-3">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input id="f-r3-constX" type="number" class="validate restricX" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>X</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOp">
+                                <option value="adi" selected>+</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="f-r3-constY" type="number" class="validate restricY" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>Y</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOpResult">
+                                <option value="==" selected>=</option>
+                                <option value=">=">>=</option>
+                                <option value="<=">
+                                    &lt=</option>
+                            </select> </div>
+                        <div class="input-field col s2">
+                            <input id="f-r3-result" type="number" class="validate restricValResult" placeholder="0">
+                            <span class="helper-text" data-success="right" data-error="wrong"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row center-align">
+                <form class="col s12" id="func-retric-4">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input id="f-r4-constX" type="number" class="validate restricX" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>X</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOp">
+                                <option value="adi" selected>+</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="f-r4-constY" type="number" class="validate restricY" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>Y</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOpResult">
+                                <option value="==" selected>=</option>
+                                <option value=">=">>=</option>
+                                <option value="<=">
+                                    &lt=</option>
+                            </select> </div>
+                        <div class="input-field col s2">
+                            <input id="f-r4-result" type="number" class="validate restricValResult" placeholder="0">
+                            <span class="helper-text" data-success="right" data-error="wrong"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row center-align">
+                <form class="col s12" id="func-retric-4">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input id="f-r4-constX" type="number" class="validate restricX" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>X</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOp">
+                                <option value="adi" selected>+</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s2">
+                            <input id="f-r4-constY" type="number" class="validate restricY" placeholder="0">
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="p-t-25 col s1">
+                            <span>Y</span>
+                        </div>
+                        <div class="input-field col s2">
+                            <select class="browser-default restricOpResult">
+                                <option value="==" selected>=</option>
+                                <option value=">=">>=</option>
+                                <option value="<=">
+                                    &lt=</option>
+                            </select> </div>
+                        <div class="input-field col s2">
+                            <input id="f-r4-result" type="number" class="validate restricValResult" placeholder="0">
+                            <span class="helper-text" data-success="right" data-error="wrong"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row center-align">
+                <div class="row center-align">
+                    <a class="waves-effect waves-light btn" id="btn-start" onclick="startCalc()">Calcular</a>
+                </div>
+            </div>
+        </div>
+        <aside class="output-result">
+            <div id="tabela"></div>
+        </aside>
+        <aside class="output-gemetry">
+            OG
+        </aside>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/function.js"></script>
+</body>
+
+</html>
